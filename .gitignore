@@ -12,5 +12,7 @@ google_fit/.DS_Store
 google_fit/assets/
 google_fit/package-lock.json
 google_fit/babel.config.js
+google_fit/config.js
+google_fit/.expo
 
 
