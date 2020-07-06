@@ -1,0 +1,16 @@
+google_fit/node_modules/
+google_fit/.expo-shared
+google_fit/npm-debug.*
+google_fit/*.jks
+google_fit/*.p8
+google_fit/*.p12
+google_fit/*.key
+google_fit/*.mobileprovision
+google_fit/*.orig.*
+google_fit/web-build/
+google_fit/.DS_Store
+google_fit/assets/
+google_fit/package-lock.json
+google_fit/babel.config.js
+
+
