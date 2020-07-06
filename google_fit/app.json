@@ -18,7 +18,8 @@
             "DEFAULT"
           ]
         }
-      ]
+      ],
+      "package": "android"
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -32,10 +33,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "io.expo.client"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }

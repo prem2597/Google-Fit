@@ -14,5 +14,8 @@ google_fit/package-lock.json
 google_fit/babel.config.js
 google_fit/config.js
 google_fit/.expo
+google_fit/android
+google_fit/ios
+google_fit/metro.config.js
 
 
