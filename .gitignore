@@ -19,6 +19,11 @@ google_fit/ios
 google_fit/metro.config.js
 .idea/
 google_fit/Google fit
+google_fit/.gradle/
+google_fit/caches/
+google_fit/daemon/
+google_fit/native/
+google_fit/wrapper/
 
 
 
