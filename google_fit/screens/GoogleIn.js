@@ -24,6 +24,8 @@ class GoogleIn extends Component {
         scopes: [
           Scopes.FITNESS_ACTIVITY_READ_WRITE,
           Scopes.FITNESS_BODY_READ_WRITE,
+          Scopes.FITNESS_ACTIVITY_READ,
+          Scopes.FITNESS_LOCATION_READ,
         ]
       });
 
@@ -31,12 +33,9 @@ class GoogleIn extends Component {
         this.setState({
           access_token: result.accessToken
         })
-        console.log(result.accessToken)
-        // this.props.navigation.navigate('GoogleFitData', {
-        //   access_token: this.state.access_token
-        // });
-        console.log("-------------------")
-        console.log(this.state.access_token)
+        this.props.navigation.navigate('GoogleFitData', {
+          access_token: this.state.access_token
+        });
       }
     }
     catch(e) {

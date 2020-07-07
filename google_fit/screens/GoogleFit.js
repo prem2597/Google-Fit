@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
-import GoogleFit, { Scopes } from 'react-native-google-fit'
 
 class GoogleFitData extends Component {
 
@@ -14,35 +13,40 @@ class GoogleFitData extends Component {
 
   componentDidMount() {
       if(this.state.access_token) {
-        Alert.alert("You have Successfully logined into your Google account")
+        Alert.alert(this.state.access_token)
       }
   }
 
-  authorization = async() => {
+  async postData() {
 
-    console.log(GoogleFit.checkIsAuthorized())
-
-    const options = {
-      scopes: [
-        Scopes.FITNESS_ACTIVITY_READ_WRITE,
-        Scopes.FITNESS_BODY_READ_WRITE,
-      ],
+    const url = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate'
+ 
+    const data = {
+      "aggregateBy": [{
+           "dataTypeName": "com.google.step_count.delta",
+              "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+       }],
+      "bucketByTime": { "durationMillis": 86400000 },
+       "startTimeMillis": 1593801000000,
+      "endTimeMillis": 1593973800000
     }
 
-    const result = await GoogleFit.authorize(options)
-      .then(authResult => {
-        if (authResult.success) {
-          console.log("AUTH_SUCCESS")
-        } else {
-          console.log("AUTH_DENIED", authResult)
-        }
-      })
-      .catch(() => {
-        console.log("AUTH_ERROR")
-      })
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      header: { 
+        'content-type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.access_token
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: data
+    });
 
-    console.log(result)
-
+    console.log(response.json())
+    return response.json();
   }
 
   render() {
@@ -52,7 +56,7 @@ class GoogleFitData extends Component {
                 You should authorize google fit in order to fetch the data
             </Text>
             <View>
-                <TouchableOpacity style={styles.button} onPress={() => this.authorization()}>
+                <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
                     <Text style={{ fontSize: 20, color:'white' }}>Click here to Authorize</Text>
                 </TouchableOpacity>
             </View>

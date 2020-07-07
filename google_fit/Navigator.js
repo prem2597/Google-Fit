@@ -4,7 +4,7 @@ import GoogleFitData from './screens/GoogleFit';
 
 const AppNavigator = createSwitchNavigator({
     GoogleIn: GoogleIn,
-    // GoogleFitData: GoogleFitData
+    GoogleFitData: GoogleFitData
 })
 
 const Navigator = createAppContainer(AppNavigator);
