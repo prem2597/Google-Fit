@@ -26,6 +26,13 @@ class GoogleIn extends Component {
           Scopes.FITNESS_BODY_READ_WRITE,
           Scopes.FITNESS_ACTIVITY_READ,
           Scopes.FITNESS_LOCATION_READ,
+          Scopes.FITNESS_BODY_READ,
+          Scopes.FITNESS_NUTRITION_READ,
+          Scopes.FITNESS_BLOOD_PRESSURE_READ,
+          Scopes.FITNESS_BLOOD_GLUCOSE_READ,
+          Scopes.FITNESS_OXYGEN_SATURATION_READ,
+          Scopes.FITNESS_BODY_TEMPERATURE_READ,
+          Scopes.FITNESS_REPRODUCTIVE_HEALTH_READ
         ]
       });
 
