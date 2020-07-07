@@ -53,11 +53,11 @@ class GoogleFitData extends Component {
     return (
         <View style={styles.container}>
             <Text style={styles.welcome}>
-                You should authorize google fit in order to fetch the data
+                You can see your Google Fit data now
             </Text>
             <View>
                 <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
-                    <Text style={{ fontSize: 20, color:'white' }}>Click here to Authorize</Text>
+                    <Text style={{ fontSize: 20, color:'white' }}>Click here to see the data</Text>
                 </TouchableOpacity>
             </View>
         </View> 
