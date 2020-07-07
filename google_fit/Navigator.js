@@ -1,10 +1,10 @@
 import GoogleIn from './screens/GoogleIn'
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
-import GoogleFit from './screens/GoogleFit';
+import GoogleFitData from './screens/GoogleFit';
 
 const AppNavigator = createSwitchNavigator({
     GoogleIn: GoogleIn,
-    GoogleFit: GoogleFit
+    // GoogleFitData: GoogleFitData
 })
 
 const Navigator = createAppContainer(AppNavigator);

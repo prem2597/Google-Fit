@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { logger } from 'react-native-logs';
 import config from '../config';
 import * as Google from 'expo-google-app-auth';
+import { Scopes } from 'react-native-google-fit'
 
 class GoogleIn extends Component {
 
@@ -18,16 +19,24 @@ class GoogleIn extends Component {
     try {
       const result = await Google.logInAsync({
         androidClientId: config.Android_client_id,
-        iosClientId: config.IOS_client_secret
+        iosClientId: config.IOS_client_secret,
+        // scopes : ['https://www.googleapis.com/auth/fitness.activity.read', 'https://www.googleapis.com/auth/fitness.activity.write']
+        scopes: [
+          Scopes.FITNESS_ACTIVITY_READ_WRITE,
+          Scopes.FITNESS_BODY_READ_WRITE,
+        ]
       });
 
       if (result.type === 'success') {
         this.setState({
           access_token: result.accessToken
         })
-        this.props.navigation.navigate('GoogleFit', {
-          access_token: this.state.access_token
-        });
+        console.log(result.accessToken)
+        // this.props.navigation.navigate('GoogleFitData', {
+        //   access_token: this.state.access_token
+        // });
+        console.log("-------------------")
+        console.log(this.state.access_token)
       }
     }
     catch(e) {
