@@ -14,6 +14,10 @@ google_fit/.expo-shared
 google_fit/assets/
 google_fit/babel.config.js
 google_fit/package-lock.json
+google_fit/.expo
+google_fit/.env
+google_fit/config.js
+
 
 
 
