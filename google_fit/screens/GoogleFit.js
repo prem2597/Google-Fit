@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 class GoogleFitData extends Component {
 
@@ -17,36 +18,25 @@ class GoogleFitData extends Component {
       }
   }
 
-  async postData() {
-
-    const url = 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate'
- 
-    const data = {
-      "aggregateBy": [{
-           "dataTypeName": "com.google.step_count.delta",
-              "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
-       }],
-      "bucketByTime": { "durationMillis": 86400000 },
-       "startTimeMillis": 1593801000000,
-      "endTimeMillis": 1593973800000
-    }
-
-    const response = await fetch(url, {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      header: { 
-        'content-type': 'application/json',
+  postData = async () => {
+    axios({
+      method: 'post',
+      url: 'https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate',
+      headers: {
         'Authorization': 'Bearer ' + this.state.access_token
-      },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: data
+      }, 
+      data: {
+        "aggregateBy": [{
+          "dataTypeName": "com.google.step_count.delta",
+          "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+        }],
+        "bucketByTime": { "durationMillis": 86400000 },
+        "startTimeMillis": 1594060200000,
+        "endTimeMillis": 1594146600000
+      }
+    }).then((resp) => {
+      console.log(resp.data)
     });
-
-    console.log(response.json())
-    return response.json();
   }
 
   render() {
@@ -78,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     color: '#fff',
-    margin: 10,
+    margin: 2,
   },
 });
 

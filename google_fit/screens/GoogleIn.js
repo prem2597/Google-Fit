@@ -20,10 +20,7 @@ class GoogleIn extends Component {
       const result = await Google.logInAsync({
         androidClientId: config.Android_client_id,
         iosClientId: config.IOS_client_secret,
-        // scopes : ['https://www.googleapis.com/auth/fitness.activity.read', 'https://www.googleapis.com/auth/fitness.activity.write']
         scopes: [
-          Scopes.FITNESS_ACTIVITY_READ_WRITE,
-          Scopes.FITNESS_BODY_READ_WRITE,
           Scopes.FITNESS_ACTIVITY_READ,
           Scopes.FITNESS_LOCATION_READ,
           Scopes.FITNESS_BODY_READ,
@@ -40,6 +37,7 @@ class GoogleIn extends Component {
         this.setState({
           access_token: result.accessToken
         })
+        console.log(this.state.access_token)
         this.props.navigation.navigate('GoogleFitData', {
           access_token: this.state.access_token
         });
