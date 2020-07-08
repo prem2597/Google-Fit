@@ -46,9 +46,21 @@ class GoogleFitData extends Component {
                 You can see your Google Fit data now
             </Text>
             <View>
-                <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
-                    <Text style={{ fontSize: 20, color:'white' }}>Click here to see the data</Text>
-                </TouchableOpacity>
+              <View>
+                <Text style={styles.header}>Please select the kind of data you want to see from the below list</Text>
+              </View>
+              <View>
+
+              </View>
+              <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
+                  <Text style={{ fontSize: 20, color:'white', margin: 15, textAlign:'center', paddingTop: 55 }}>Step Count</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
+                  <Text style={{ fontSize: 20, color:'white', margin: 15, textAlign:'center' }}>Blood Pressure</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => this.postData()}>
+                  <Text style={{ fontSize: 20, color:'white', margin: 15, textAlign:'center' }}>Heart Rate</Text>
+              </TouchableOpacity>
             </View>
         </View> 
     );
@@ -58,17 +70,26 @@ class GoogleFitData extends Component {
 export default GoogleFitData
 
 const styles = StyleSheet.create({
+  header: {
+    justifyContent: 'center',
+    color: 'gold',
+    fontSize: 22,
+    textAlign: 'center',
+    margin: 10
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#00a8b5',
+    paddingTop: 15
   },
     welcome: {
     fontSize: 25,
     textAlign: 'center',
     color: '#fff',
-    margin: 2,
+    margin: 10,
+    paddingTop: 15
   },
 });
 
