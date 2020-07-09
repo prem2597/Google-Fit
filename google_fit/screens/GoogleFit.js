@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#00a8b5',
-    paddingTop: 15
+    paddingTop: 35
   },
     welcome: {
     fontSize: 25,
