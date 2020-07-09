@@ -11,12 +11,11 @@ class DataForm extends Component {
           access_token: navigation.access_token,
           startDate: "",
           endDate: "",
+          data: [],
         }
     }
 
     handleStartDate = (text) => {
-      var myDate = +new Date(text+'T00:00:00+0000')
-      console.log(myDate)
       this.setState({
         startDate: text
       });
@@ -28,12 +27,29 @@ class DataForm extends Component {
       });
     }
 
-    onSubmit = () => {
-      // console.log(this.state.startDate)
-      // console.log(this.state.endDate)
-      // this.props.navigation.navigate('SecondPage', {
+    onSubmit = async () => {
+      await axios.get('https://www.googleapis.com/fitness/v1/users/me/dataSources/derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm/datasets/1594080000000000000-1594083600000000000', {
+            headers: {
+				      'Authorization': 'Bearer '+ this.state.access_token,
+            }
+        }).then((resp) => {
+        var datapoint = [] 
+        var array = resp.data["point"]
+        for (var i = 0; i < array.length; i++) {
+          var sub = array[i]["value"]
+          for (var j = 0; j < sub.length; j++) {
+            datapoint.push(sub[j]["fpVal"])
+          }
+        }
+        this.setState({
+          data: datapoint
+        });
+        console.log(this.state.data)
+        this.props.navigation.navigate('DataHeart', {
+          data: this.state.data
+        });
+      });
 
-      // });
     }
 
     render() {
