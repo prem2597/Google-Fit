@@ -1,12 +1,15 @@
 import GoogleIn from './screens/GoogleIn'
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import GoogleFitData from './screens/GoogleFit';
+import DataForm from './screens/DataForm';
 
-const AppNavigator = createSwitchNavigator({
+const AppNavigator = createStackNavigator({
     GoogleIn: GoogleIn,
-    GoogleFitData: GoogleFitData
+    GoogleFitData: GoogleFitData,
+    DataForm: DataForm,
     },{
-    intialRouteName: GoogleFitData,
+    intialRouteName: GoogleIn,
   })
 
 const Navigator = createAppContainer(AppNavigator);

@@ -37,6 +37,9 @@ class GoogleFitData extends Component {
     // }).then((resp) => {
     //   console.log(resp.data)
     // });
+    this.props.navigation.navigate('DataForm', {
+      access_token: this.state.access_token
+    });
   }
 
   render() {
